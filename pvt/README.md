@@ -102,13 +102,13 @@ python get_energy.py --config configs/pvt_v2/pvt_v2_b0_ecoformer.py
 
 ## Results and Models
 
-| Model    | #Mul. (B) | #Add. (B) | Energy (B pJ) | Throughput (images/s) | Top-1 Acc. (%) | Download   |
-| -------- | --------- | --------- | ------------- | --------------------- | -------------- | ---------- |
-| PVTv2-B0 | 0.54      | 0.56      | 2.5           | 1379                  | 70.44          | [Github]() |
-| PVTv2-B1 | 2.03      | 2.09      | 9.4           | 874                   | 78.38          | [Github]() |
-| PVTv2-B2 | 3.85      | 3.97      | 17.8          | 483                   | 81.28          | [Github]() |
-| PVTv2-B3 | 6.54      | 6.75      | 30.25         | 325                   | 81.96          | [Github]() |
-| PVTv2-B4 | 9.57      | 9.82      | 44.25         | 249                   | 81.90          | [Github]() |
+| Model    | #Mul. (B) | #Add. (B) | Energy (B pJ) | Throughput (images/s) | Top-1 Acc. (%) | Download                                                                                    |
+| -------- | --------- | --------- | ------------- | --------------------- | -------------- | ------------------------------------------------------------------------------------------- |
+| PVTv2-B0 | 0.54      | 0.56      | 2.5           | 1379                  | 70.44          | [Github](https://github.com/ziplab/EcoFormer/releases/download/v1.0/pvtv2_b0_ecoformer.pth) |
+| PVTv2-B1 | 2.03      | 2.09      | 9.4           | 874                   | 78.38          | [Github](https://github.com/ziplab/EcoFormer/releases/download/v1.0/pvtv2_b1_ecoformer.pth) |
+| PVTv2-B2 | 3.85      | 3.97      | 17.8          | 483                   | 81.28          | [Github](https://github.com/ziplab/EcoFormer/releases/download/v1.0/pvtv2_b2_ecoformer.pth) |
+| PVTv2-B3 | 6.54      | 6.75      | 30.25         | 325                   | 81.96          | [Github](https://github.com/ziplab/EcoFormer/releases/download/v1.0/pvtv2_b3_ecoformer.pth) |
+| PVTv2-B4 | 9.57      | 9.82      | 44.25         | 249                   | 81.90          | [Github](https://github.com/ziplab/EcoFormer/releases/download/v1.0/pvtv2_b4_ecoformer.pth) |
 
 ## License
 

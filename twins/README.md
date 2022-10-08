@@ -99,9 +99,9 @@ python get_energy.py --model alt_gvt_small_ecoformer
 
 ## Results and Models
 
-| Model       | #Mul. (B) | #Add. (B) | Energy (B pJ) | Throughput (images/s) | Top-1 Acc. (%) | Download   |
-| ----------- | --------- | --------- | ------------- | --------------------- | -------------- | ---------- |
-| Twins-SVT-S | 2.72      | 2.81      | 12.6          | 576                   | 80.22          | [Github]() |
+| Model       | #Mul. (B) | #Add. (B) | Energy (B pJ) | Throughput (images/s) | Top-1 Acc. (%) | Download                                                                                       |
+| ----------- | --------- | --------- | ------------- | --------------------- | -------------- | ---------------------------------------------------------------------------------------------- |
+| Twins-SVT-S | 2.72      | 2.81      | 12.6          | 576                   | 80.22          | [Github](https://github.com/ziplab/EcoFormer/releases/download/v1.0/twins_svt_s_ecoformer.pth) |
 
 ## License
 

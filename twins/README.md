@@ -39,7 +39,7 @@ conda activate ecoformer
 ```bash
 python -m torch.distributed.launch --nproc_per_node=8 --master_port=1236 \
   --use_env main.py \
-  --model alt_gvt_small_sra_to_msa \
+  --model alt_gvt_small \
   --batch-size 32 \
   --data-path [path of imagenet] \
   --dist-eval \

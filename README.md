@@ -62,7 +62,7 @@ For experiments on twins, please refer to [twins](./twins).
 If you find ``EcoFormer`` useful in your research, please consider to cite the following related papers:
 
 ```BibTeX
-@inproceedings{liu2022ecoformer
+@inproceedings{liu2022ecoformer,
   title={EcoFormer: Energy-Saving Attention with Linear Complexity},
   author={Liu, Jing and Pan, Zizheng and He, Haoyu and Cai, Jianfei and Zhuang, Bohan},
   booktitle={NeurIPS},

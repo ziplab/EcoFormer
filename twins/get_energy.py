@@ -110,54 +110,6 @@ def main(args):
     )
     print(model)
 
-    if args.finetune:
-        checkpoint = torch.load(args.finetune, map_location="cpu")
-
-        if "model" in checkpoint:
-            checkpoint_model = checkpoint["model"]
-        else:
-            checkpoint_model = checkpoint
-
-        state_keys = list(checkpoint_model.keys())
-        for k, p in model.named_parameters():
-            if k in checkpoint_model:
-                state_keys.remove(k)
-                p.data = checkpoint_model[k].float()
-            else:
-                # load from pretrained twins
-                # refer_k = k.split('.')
-                # refer_k[-2] = 'q'
-                # target_key = '.'.join(refer_k)
-                # q_weight = checkpoint_model[target_key].float()
-                # state_keys.remove(target_key)
-                #
-                # refer_k[-2] = 'kv'
-                # target_key = '.'.join(refer_k)
-                # kv_weight = checkpoint_model[target_key].float()
-                # state_keys.remove(target_key)
-                #
-                # p.data = torch.cat((q_weight, kv_weight), dim=0)
-                # load from msa weight
-                refer_k = k.split(".")
-                source_k = refer_k[-2]
-                refer_k[-2] = "qkv"
-                target_key = ".".join(refer_k)
-                qkv_weight = checkpoint_model[target_key].float()
-                shapes = qkv_weight.shape
-                dim = shapes[0] // 3
-                if target_key in state_keys:
-                    state_keys.remove(target_key)
-                if source_k == "to_qk":
-                    p.data = qkv_weight[:dim, ...]
-                elif source_k == "to_v":
-                    p.data = qkv_weight[-dim:, ...]
-
-        if len(state_keys) > 0:
-            for temp_key in state_keys:
-                print("Not used: %s" % temp_key)
-        else:
-            print("Load from pretrained model - All matched")
-
     model.set_retrain_resume()
     try:
         from mmcv.cnn import get_model_complexity_info
@@ -174,12 +126,20 @@ def main(args):
             # stage_muls, stage_adds = msa_flops(H // (4 * (2 ** i)), W // (4 * (2 ** i)), model.embed_dims[i],
             #                                    model.num_heads[i])
             if i != 3:
-                stage_muls, stage_adds = fast_attn_ecoformer_flops(
-                    H // (4 * (2 ** i)),
-                    W // (4 * (2 ** i)),
-                    model.embed_dims[i],
-                    model.num_heads[i],
-                )
+                if args.train_msa:
+                    stage_muls, stage_adds = msa_flops(
+                        H // (4 * (2 ** i)),
+                        W // (4 * (2 ** i)),
+                        model.embed_dims[i],
+                        model.num_heads[i],
+                    )
+                else:
+                    stage_muls, stage_adds = fast_attn_ecoformer_flops(
+                        H // (4 * (2 ** i)),
+                        W // (4 * (2 ** i)),
+                        model.embed_dims[i],
+                        model.num_heads[i],
+                    )
             else:
                 stage_muls, stage_adds = msa_flops(
                     H // (4 * (2 ** i)),

@@ -21,7 +21,7 @@ class KernelSH(nn.Module):
         kernelfunc=gaussian_kernel,
         learning_rate=0.0005,
         momentum=0.9,
-        iteration_n=500,
+        iteration_n=100,
     ):
         super().__init__()
         self.nbits = nbits
